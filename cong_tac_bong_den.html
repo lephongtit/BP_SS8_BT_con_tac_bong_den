@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let ElectricLamp=function(status){
+            this.status=status;
+            this.turnOn=function () {
+                this.status=true;
+            };
+            this.turnOff=function () {
+                this.status=false
+            };
+        };
+
+
+        let SwitchButton=function (status,lamp) {
+            this.status=status;
+            this.lamp=lamp;
+            this.ConnectToLamp=function(lamp){
+                this.lamp=lamp;
+            };
+            
+             this.SwitchOn=function () {
+                this.switchOn=this.lamp.turnOn()
+             };
+             this.SwitchOff=function () {
+                 this.switchOff=this.lamp.turnOff()
+             };
+        }
+        let ElectricLamp1=new ElectricLamp();
+        let SwitchButton1=new SwitchButton();
+        SwitchButton1.ConnectToLamp(ElectricLamp1);
+        SwitchButton1.status=true;
+        for (let i=0;i<=10;i++) {
+            SwitchButton1.status = !SwitchButton1.status;
+            if (SwitchButton1.status){
+                document.write("Đèn sáng!"+"<br/>");
+            }else {
+                document.write("Đèn tắt!"+"<br/>");
+            }
+        }
+    </script>
+</body>
+</html>
